@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Specialized;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,11 +25,13 @@ public class Worm_Movement : MonoBehaviour
             {
                 case TouchPhase.Began:
                     // Record first touch in start position variable
-                    startPos = touch.position;
+                    Vector2 startPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                    startPos = startPosition;
                     break;
 
                 case TouchPhase.Moved:
-                    direction = wormPos - touch.position;
+                    Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                    direction = wormPos - touchPosition;
                     direction.x = 0;
 
                     transform.position = direction;
