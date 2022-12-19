@@ -36,6 +36,7 @@ public class Fish_Movement : MonoBehaviour
         {
             Destroy(this.gameObject);
             // TODO: Player gets money (points) when this happens
+            textManager.instance.AddMoney();
         }
 
     }
