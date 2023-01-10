@@ -9,7 +9,7 @@ public class textManager : MonoBehaviour
 
     public Text moneyText;
 
-    int money = 0;
+    int money;
 
     private void Awake()
     {

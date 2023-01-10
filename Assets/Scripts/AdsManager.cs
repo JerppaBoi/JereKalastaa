@@ -23,7 +23,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
     public void OnInitializationComplete()
     {
         Debug.Log("Unity Ads initialization complete.");
-        LoadInterstitialAd();
+        //LoadInterstitialAd();
+        LoadBannerAd();
     }
 
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)
@@ -65,6 +66,27 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
         Debug.Log("OnUnityAdsShowComplete");
+    }
+
+    public void LoadBannerAd()
+    {
+        Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
+        Advertisement.Banner.Load("Banner_Android",
+            new BannerLoadOptions
+            {
+                loadCallback = OnBannerLoaded,
+                errorCallback = OnBannerError
+            });
+    }
+
+    void OnBannerLoaded()
+    {
+        Advertisement.Banner.Show("Banner_Android");
+    }
+
+    void OnBannerError(string message)
+    {
+
     }
 
 }
