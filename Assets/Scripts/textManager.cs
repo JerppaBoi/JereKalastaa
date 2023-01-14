@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class textManager : MonoBehaviour
 
     public Text moneyText;
 
-    int money;
+    public int money;
 
     private void Awake()
     {
@@ -19,6 +20,10 @@ public class textManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Data data = SaveSystem.LoadData();
+        
+        money = data.balance;
+
         moneyText.text = "Balance: " + money.ToString() + " $";
     }
 
@@ -26,5 +31,12 @@ public class textManager : MonoBehaviour
     {
         money = money + 10;
         moneyText.text = "Balance: " + money.ToString() + " $";
+
+        SaveSystem.SaveData(this);
+    }
+
+    public int findMoney()
+    {
+        return money;
     }
 }
