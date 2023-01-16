@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Security.Cryptography;
-using System.Threading;
 using UnityEngine;
 
 public class Fish_Movement : MonoBehaviour
@@ -33,10 +31,11 @@ public class Fish_Movement : MonoBehaviour
         }
 
         if (collision.gameObject.tag == "Respawn") // When player lifts fish up
-        {
-            Destroy(this.gameObject);
+        { 
             // TODO: Player gets money (points) when this happens
             textManager.instance.AddMoney();
+            Debug.Log("Add money");
+            Destroy(this.gameObject);
         }
 
     }

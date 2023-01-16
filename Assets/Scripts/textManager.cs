@@ -11,6 +11,7 @@ public class textManager : MonoBehaviour
     public Text moneyText;
 
     public int money;
+    public int price;
 
     private void Awake()
     {
@@ -38,5 +39,19 @@ public class textManager : MonoBehaviour
     public int findMoney()
     {
         return money;
+    }
+
+    public void buy()
+    {
+        if (money >= price)
+        {
+            money = money - price;
+        }
+        else
+        {
+            Debug.Log("You poor guy trying to stealing from me???");
+        }
+
+        SaveSystem.SaveData(this);
     }
 }
